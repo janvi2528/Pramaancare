@@ -2,7 +2,7 @@ const CACHE_NAME = 'pramaan-care-v1';
 const STATIC_ASSETS = [
   '/',
   '/images/light logo.svg',
-  '/images/Meet Ms. Prerna Sethi.jpg',
+  '/images/about-prerna.webp',
   '/images/Fevicon.svg'
 ];
 

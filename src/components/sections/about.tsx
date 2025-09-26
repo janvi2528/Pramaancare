@@ -18,7 +18,7 @@ export function About() {
         <div className="grid md:grid-cols-2 gap-8 items-stretch">
           <div className="relative order-2 md:order-1 flex">
             <Image
-              src="/images/Meet Ms. Prerna Sethi.jpg"
+              src="/images/about-prerna.webp"
               alt="Ms. Prerna Sethi, Clinical Psychologist"
               width={794}
               height={602}

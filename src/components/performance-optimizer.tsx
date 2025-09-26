@@ -17,7 +17,7 @@ export function PerformanceOptimizer() {
       // Preload critical images
       const criticalImages = [
         '/images/light logo.svg',
-        '/images/Meet Ms. Prerna Sethi.jpg'
+        '/images/about-prerna.webp'
       ];
 
       criticalImages.forEach(src => {

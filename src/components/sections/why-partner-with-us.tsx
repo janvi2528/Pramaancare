@@ -32,14 +32,13 @@ export function WhyPartnerWithUs() {
               </p>
             </div>
           </div>
-            <div className="relative min-h-[400px] md:min-h-0 order-1 md:order-2 flex items-center justify-center">
-              <Image
-                src="/images/Why Choose Pramaan Carelogo.png"
-                alt="Why Choose Pramaan Care Logo"
-                fill
-                className="object-cover md:rounded-r-[20px]"
-                priority
-              />
+          <div className="relative min-h-[400px] md:min-h-0 order-1 md:order-2">
+            <Image
+              src="/images/34400.jpg"
+              alt="Professional mental health counseling environment"
+              fill
+              className="object-cover md:rounded-r-[20px]"
+            />
           </div>
         </div>
       </div>

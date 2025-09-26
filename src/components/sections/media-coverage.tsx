@@ -13,13 +13,20 @@ export function MediaCoverage() {
           <div className="rounded-2xl">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 order-1">
-                <Image
-                  src="/images/media presents.webp"
-                  alt="Ms. Prerna Sethi Media Coverage"
-                  width={800}
-                  height={600}
-                  className="w-full h-auto object-contain transform scale-105"
-                />
+                <a
+                  href="https://youtu.be/fE0xeufZIng?feature=shared"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block cursor-pointer"
+                >
+                  <Image
+                    src="/images/media presents.webp"
+                    alt="Ms. Prerna Sethi Media Coverage"
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-contain transform scale-105 hover:scale-110 transition-transform duration-300"
+                  />
+                </a>
               </div>
               <div className="space-y-4 order-2">
                 <div className="flex items-center text-sm text-primary-foreground/80">
@@ -30,10 +37,16 @@ export function MediaCoverage() {
                   Expert Insights on Mental Health and Psychological Assessment
                 </h3>
                 <p className="text-primary-foreground/80 text-lg leading-relaxed">
-                  Ms. Prerna Sethi shares her expertise on modern approaches to psychological assessment 
-                  and mental health care, discussing the importance of comprehensive evaluation and 
-                  personalized treatment strategies for optimal patient outcomes.
+                  Ms. Prerna Sethi sheds light on how narratives like Love Jihad and "Jilted Lovers Syndrome" often mask deeper psychological scars. She explains how signs of distress are dismissed as normal behavior — until rejection strikes, leaving individuals unable to cope with the emotional fallout.
                 </p>
+                <a
+                  href="https://youtu.be/fE0xeufZIng?feature=shared"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-white text-primary font-medium rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                >
+                  Watch this whole video
+                </a>
               </div>
             </div>
           </div>

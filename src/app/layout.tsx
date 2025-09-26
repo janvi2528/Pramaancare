@@ -84,7 +84,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/Fevicon.svg" type="image/svg+xml" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="preload" href="/images/Meet Ms. Prerna Sethi.jpg" as="image" />
+        <link rel="preload" href="/images/about-prerna.webp" as="image" />
         <link rel="preload" href="https://cdn.shopify.com/s/files/1/0581/7198/1896/files/Three.png?v=1756186294" as="image" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://cdn.shopify.com" />
