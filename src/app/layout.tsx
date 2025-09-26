@@ -4,6 +4,7 @@ import './optimized.css';
 import { Toaster } from "@/components/ui/toaster"
 import { StructuredData } from "@/components/structured-data"
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { PerformanceOptimizerV2 } from "@/components/performance-optimizer-v2"
 import { MobilePerformance } from "@/components/mobile-performance"
 import { CriticalPerformance } from "@/components/critical-performance"
@@ -114,6 +115,7 @@ export default function RootLayout({
           <Toaster />
           <StructuredData />
           <Analytics />
+          <SpeedInsights />
           <PerformanceOptimizerV2 />
           <MobilePerformance />
           <CriticalPerformance />
