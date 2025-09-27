@@ -16,7 +16,7 @@ export function About() {
     >
       <div className="w-full px-[14px] md:w-[96%] md:mx-auto md:px-6">
         <div className="grid md:grid-cols-2 gap-8 items-stretch">
-          <div className="relative order-2 md:order-1 flex">
+          <div className="relative order-1 flex">
             <Image
               src="/images/about-prerna.webp"
               alt="Ms. Prerna Sethi, Clinical Psychologist"
@@ -27,7 +27,7 @@ export function About() {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
-          <div className="space-y-6 order-1 md:order-2 flex flex-col">
+          <div className="space-y-6 order-2 flex flex-col">
             <h2 className="font-headline font-bold text-foreground">
               Meet Ms. Prerna Sethi <br />
               Trusted Clinical Psychologist

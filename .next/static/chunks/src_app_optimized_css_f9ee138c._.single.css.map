@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/app/optimized.css"],"sourcesContent":["/* Critical CSS optimizations */\n\n/* Critical font declarations */\n.font-headline { font-family: 'Forum', serif; }\n.font-body { font-family: 'Plus Jakarta Sans', sans-serif; }\n\n/* Reduce layout shifts */\n.image-container {\n  aspect-ratio: attr(width) / attr(height);\n}\n\n/* Optimize animations for performance */\n@media (prefers-reduced-motion: reduce) {\n  *,\n  *::before,\n  *::after {\n    animation-duration: 0.01ms !important;\n    animation-iteration-count: 1 !important;\n    transition-duration: 0.01ms !important;\n  }\n}\n\n/* GPU acceleration for smooth animations */\n.gpu-accelerated {\n  transform: translateZ(0);\n  will-change: transform;\n}\n\n/* Optimize font loading */\n@font-face {\n  font-family: 'Forum';\n  font-display: swap;\n}\n\n@font-face {\n  font-family: 'Plus Jakarta Sans';\n  font-display: swap;\n}\n\n/* Reduce repaints */\n.no-repaint {\n  contain: layout style paint;\n}\n\n/* Optimize scrolling */\n.smooth-scroll {\n  scroll-behavior: smooth;\n  -webkit-overflow-scrolling: touch;\n}"],"names":[],"mappings":"AAGA;;;;AACA;;;;AAGA;;;;AAKA;EACE;;;;;;;AAUF;;;;;AAMA;;;;;AAKA;;;;;AAMA;;;;AAKA"}}]
+}

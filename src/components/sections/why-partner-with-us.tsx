@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -15,8 +14,9 @@ export function WhyPartnerWithUs() {
       viewport={{ once: true, amount: 0.2 }}
     >
       <div className="w-full px-[14px] md:w-[96%] md:mx-auto md:px-6">
-        <div className="grid md:grid-cols-2 bg-background rounded-[20px] md:items-stretch">
-          <div className="pt-6 px-0 pb-0 md:p-12 lg:p-16 space-y-8 flex flex-col justify-center order-2 md:order-1">
+        <div className="grid md:grid-cols-2 md:gap-8 bg-background rounded-[20px] md:items-stretch overflow-hidden">
+          {/* Text Content */}
+          <div className="pt-6 pb-0 space-y-8 flex flex-col justify-center order-2 md:order-1">
             <h2 className="font-headline font-bold text-foreground">
               Why Choose Pramaan Care
             </h2>
@@ -32,12 +32,15 @@ export function WhyPartnerWithUs() {
               </p>
             </div>
           </div>
-          <div className="relative min-h-[400px] md:min-h-0 order-1 md:order-2">
+
+          {/* Image Section */}
+          <div className="relative min-h-[400px] md:min-h-0 order-1 md:order-2 flex items-center justify-center overflow-hidden rounded-r-[20px] bg-white">
             <Image
-              src="/images/34400.jpg"
-              alt="Professional mental health counseling environment"
+              src="/images/Pramaan Logo.jpeg"
+              alt="Pramaan Care Logo"
               fill
-              className="object-cover md:rounded-r-[20px]"
+              className="object-cover" 
+              priority
             />
           </div>
         </div>

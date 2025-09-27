@@ -1,10 +1,6 @@
 {
-  "/api/reviews/route": "app/api/reviews/route.js",
-  "/api/reviews/sync/route": "app/api/reviews/sync/route.js",
-  "/manifest.json/route": "app/manifest.json/route.js",
-  "/robots.txt/route": "app/robots.txt/route.js",
-  "/sitemap.xml/route": "app/sitemap.xml/route.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js",
-  "/admin/reviews/page": "app/admin/reviews/page.js"
+  "/api/reviews/route": "app/api/reviews/route.js",
+  "/manifest.json/route": "app/manifest.json/route.js",
+  "/page": "app/page.js"
 }
