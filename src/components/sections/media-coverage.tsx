@@ -20,7 +20,7 @@ export function MediaCoverage() {
                   className="block cursor-pointer"
                 >
                   <Image
-                    src="/images/media-presents.webp"
+                    src="/images/media presents.webp"
                     alt="Ms. Prerna Sethi Media Coverage"
                     width={800}
                     height={600}

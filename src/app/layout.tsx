@@ -11,7 +11,10 @@ import { CriticalPerformance } from "@/components/critical-performance"
 import LenisProvider from "@/components/lenis-provider"
 
 export const metadata: Metadata = {
-  title: 'Clinical Psychologist in Gurgaon & Delhi NCR | Pramaan Care',
+  title: {
+    default: 'Clinical Psychologist in Gurgaon & Delhi NCR | Pramaan Care',
+    template: '%s | Pramaan Care'
+  },
   description: 'RCI-registered clinical psychologist offering counselling in Gurgaon & East of Kailash, Delhi NCR, plus secure online therapy across India. Book a session today.',
   keywords: [
     'clinical psychologist Gurgaon',
@@ -19,10 +22,7 @@ export const metadata: Metadata = {
     'online therapy India',
     'couples therapy Gurgaon',
     'adolescent counselling',
-    'psychological assessment',
-    'RCI registered psychologist',
-    'mental health counseling',
-    'therapy East of Kailash'
+    'psychological assessment'
   ],
   authors: [{ name: 'Pramaan Care' }],
   creator: 'Pramaan Care',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: 'Pramaan Care',
     images: [
       {
-        url: 'https://www.pramaancare.com/images/Pramaan Logo.jpeg',
+        url: 'https://www.pramaancare.com/images/light logo.svg',
         width: 1200,
         height: 630,
         alt: 'Pramaan Care – Clinical Psychology & Counselling',
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Clinical Psychologist in Gurgaon & Delhi NCR | Pramaan Care',
     description: 'Compassionate counselling & online therapy by an RCI-registered clinical psychologist.',
-    images: ['https://www.pramaancare.com/images/Pramaan Logo.jpeg'],
+    images: ['https://www.pramaancare.com/images/light logo.svg'],
   },
   verification: {
     // Add verification codes when available
