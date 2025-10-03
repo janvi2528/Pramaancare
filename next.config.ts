@@ -29,8 +29,6 @@ const nextConfig: NextConfig = {
     webVitalsAttribution: ['CLS', 'LCP', 'FID', 'FCP', 'TTFB'],
   },
 
-  // Modern output for smaller bundles
-  output: 'standalone',
   swcMinify: true,
 
   // Turbopack configuration
@@ -52,13 +50,6 @@ const nextConfig: NextConfig = {
     reactRemoveProperties: process.env.NODE_ENV === 'production' ? {
       properties: ['^data-testid$']
     } : false,
-  },
-
-  // Modern JavaScript output
-  modularizeImports: {
-    'lucide-react': {
-      transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
-    },
   },
 
   // Webpack optimizations
@@ -95,13 +86,14 @@ const nextConfig: NextConfig = {
   compress: true,
 
   images: {
-    formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year
-    deviceSizes: [640, 750, 828, 1080, 1200],
-    imageSizes: [16, 32, 48, 64, 96],
+    formats: ['image/webp'],
+    minimumCacheTTL: 60 * 60 * 24 * 365,
+    deviceSizes: [640, 750, 1080],
+    imageSizes: [16, 32, 64],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     unoptimized: false,
+    loader: 'default',
     remotePatterns: [
       {
         protocol: 'https',

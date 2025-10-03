@@ -5,9 +5,6 @@ import { Toaster } from "@/components/ui/toaster"
 import { StructuredData } from "@/components/structured-data"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { PerformanceOptimizerV2 } from "@/components/performance-optimizer-v2"
-import { MobilePerformance } from "@/components/mobile-performance"
-import { CriticalPerformance } from "@/components/critical-performance"
 import LenisProvider from "@/components/lenis-provider"
 
 export const metadata: Metadata = {
@@ -89,29 +86,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="alternate" href="https://www.pramaancare.com/" hrefLang="en-in" />
-        <link rel="alternate" href="https://www.pramaancare.com/" hrefLang="x-default" />
         <link rel="icon" href="/images/Fevicon.svg" type="image/svg+xml" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://cdn.shopify.com" />
-        <link rel="preload" href="https://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_qU79TR_VbQ.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <style dangerouslySetInnerHTML={{__html: `
-          @font-face {
-            font-family: 'Forum';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/forum/v18/6aey4Ky-Vb8Ew_IWMJMa3mnT.woff2) format('woff2');
-          }
-          @font-face {
-            font-family: 'Plus Jakarta Sans';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_qU79TR_VbQ.woff2) format('woff2');
-          }
+          @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Forum&family=Onest:wght@100..900&display=swap');
         `}} />
       </head>
       <body className="font-body antialiased">
@@ -124,9 +104,6 @@ export default function RootLayout({
           <StructuredData />
           <Analytics />
           <SpeedInsights />
-          <PerformanceOptimizerV2 />
-          <MobilePerformance />
-          <CriticalPerformance />
         </LenisProvider>
       </body>
     </html>

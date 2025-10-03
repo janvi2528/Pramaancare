@@ -4,6 +4,9 @@ import { useEffect } from "react";
 
 export function StructuredData() {
   useEffect(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const delay = isMobile ? 3000 : 0;
+    
     const injectSchemas = () => {
       const schemas = [
       {
@@ -133,11 +136,13 @@ export function StructuredData() {
       });
     };
 
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(injectSchemas);
-    } else {
-      setTimeout(injectSchemas, 1);
-    }
+    setTimeout(() => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(injectSchemas, { timeout: 5000 });
+      } else {
+        setTimeout(injectSchemas, 100);
+      }
+    }, delay);
   }, []);
 
   return null;
