@@ -246,9 +246,9 @@ export function Services() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-headline font-bold text-foreground text-4xl md:text-5xl">
+            <h3 className="font-headline font-bold text-foreground text-4xl md:text-5xl">
               Our Services
-            </h2>
+            </h3>
             <p className="max-w-3xl mx-auto mt-6 text-muted-foreground text-sm lg:text-base xl:text-lg">
               Comprehensive mental health support tailored to meet diverse needs across individuals, relationships, families, and organizations.
             </p>
@@ -283,7 +283,7 @@ export function Services() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                   <div className="relative">
-                    <h3 className="font-headline text-2xl font-bold text-white">{service.title}</h3>
+                    <h4 className="font-headline text-2xl font-bold text-white">{service.title}</h4>
                     <p className="text-white/90 mt-2 text-sm lg:text-base xl:text-lg">{service.content}</p>
                     <Button variant="link" className="hidden md:flex text-white self-start p-0 h-auto mt-4">
                       View More <ArrowRight className="h-4 w-4 ml-1" />
