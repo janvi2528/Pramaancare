@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/admin/', '/api/'],
     },
-    sitemap: 'https://pramaancare.com/sitemap.xml',
+    sitemap: 'https://www.pramaancare.com/sitemap.xml',
   }
 }
