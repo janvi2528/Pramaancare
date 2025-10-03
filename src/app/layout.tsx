@@ -93,10 +93,10 @@ export default function RootLayout({
         <link rel="alternate" href="https://www.pramaancare.com/" hrefLang="x-default" />
         <link rel="icon" href="/images/Fevicon.svg" type="image/svg+xml" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="preload" href="/images/about-prerna.webp" as="image" />
-        <link rel="preload" href="https://cdn.shopify.com/s/files/1/0581/7198/1896/files/Three.png?v=1756186294" as="image" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://cdn.shopify.com" />
+        <link rel="preload" href="https://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_qU79TR_VbQ.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <style dangerouslySetInnerHTML={{__html: `
           @font-face {
             font-family: 'Forum';
