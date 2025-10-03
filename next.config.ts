@@ -29,6 +29,10 @@ const nextConfig: NextConfig = {
     webVitalsAttribution: ['CLS', 'LCP', 'FID', 'FCP', 'TTFB'],
   },
 
+  // Modern output for smaller bundles
+  output: 'standalone',
+  swcMinify: true,
+
   // Turbopack configuration
   turbopack: {
     rules: {
@@ -50,6 +54,13 @@ const nextConfig: NextConfig = {
     } : false,
   },
 
+  // Modern JavaScript output
+  modularizeImports: {
+    'lucide-react': {
+      transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
+    },
+  },
+
   // Webpack optimizations
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
@@ -58,10 +69,21 @@ const nextConfig: NextConfig = {
         cacheGroups: {
           default: false,
           vendors: false,
-          vendor: {
-            name: 'vendor',
-            chunks: 'all',
-            test: /node_modules/,
+          framework: {
+            name: 'framework',
+            test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
+            priority: 40,
+            enforce: true,
+          },
+          lib: {
+            test: /[\\/]node_modules[\\/]/,
+            name(module) {
+              const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)?.[1];
+              return `npm.${packageName?.replace('@', '')}`;
+            },
+            priority: 30,
+            minChunks: 1,
+            reuseExistingChunk: true,
           },
         },
       };
