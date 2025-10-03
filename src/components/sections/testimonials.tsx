@@ -126,7 +126,7 @@ const ReviewCard = ({
 };
 
 export function Testimonials() {
-  const { reviews, loading } = useReviews();
+  const { reviews, loading, error } = useReviews();
   
   // Use dynamic reviews if available, otherwise fallback to static ones
   const testimonials = reviews.length > 0 ? reviews.map(review => ({
@@ -137,11 +137,8 @@ export function Testimonials() {
     sourceUrl: review.sourceUrl
   })) : fallbackTestimonials;
 
-  // Limit testimonials for performance - show max 12
-  const limitedTestimonials = testimonials.slice(0, 12);
-
-  const firstRow = limitedTestimonials.slice(0, Math.ceil(limitedTestimonials.length / 2));
-  const secondRow = limitedTestimonials.slice(Math.ceil(limitedTestimonials.length / 2));
+  const firstRow = testimonials.slice(0, Math.ceil(testimonials.length / 2));
+  const secondRow = testimonials.slice(Math.ceil(testimonials.length / 2));
 
   if (loading) {
     return (
