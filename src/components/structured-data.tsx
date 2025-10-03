@@ -1,149 +1,111 @@
 "use client";
 
+import { useEffect } from "react";
+
 export function StructuredData() {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    "name": "Pramaan Care",
-    "description": "Professional mental health counseling and psychological services in Delhi & Gurgaon.",
-    "url": "https://pramaancare.com",
-    "logo": "https://pramaancare.com/images/light logo.svg",
-    "image": "https://pramaancare.com/images/light logo.svg",
-    "telephone": "+91-XXXXXXXXXX", // Replace with actual phone number
-    "email": "contact@pramaancare.com", // Replace with actual email
-    "address": [
+  useEffect(() => {
+    const schemas = [
       {
-        "@type": "PostalAddress",
-        "streetAddress": "Gurgaon Office Address", // Replace with actual address
-        "addressLocality": "Gurgaon",
-        "addressRegion": "Haryana",
-        "addressCountry": "IN"
-      },
-      {
-        "@type": "PostalAddress",
-        "streetAddress": "East of Kailash Office Address", // Replace with actual address
-        "addressLocality": "East of Kailash",
-        "addressRegion": "Delhi",
-        "addressCountry": "IN"
-      }
-    ],
-    "geo": [
-      {
-        "@type": "GeoCoordinates",
-        "latitude": "28.4595", // Gurgaon coordinates - replace with actual
-        "longitude": "77.0266"
-      },
-      {
-        "@type": "GeoCoordinates",
-        "latitude": "28.5494", // Delhi coordinates - replace with actual
-        "longitude": "77.2483"
-      }
-    ],
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
+        "@context": "https://schema.org",
+        "@type": ["Organization","MedicalOrganization","LocalBusiness"],
+        "name": "Pramaan Care",
+        "url": "https://www.pramaancare.com/",
+        "email": "info@pramaancare.com",
+        "telephone": "+91-8860590449",
+        "logo": "https://www.pramaancare.com/images/light logo.svg",
+        "image": "https://www.pramaancare.com/images/light logo.svg",
+        "areaServed": [
+          {"@type":"AdministrativeArea","name":"Gurgaon"},
+          {"@type":"AdministrativeArea","name":"Delhi NCR"},
+          {"@type":"Country","name":"India"},
+          {"@type":"Country","name":"International"}
         ],
-        "opens": "09:00",
-        "closes": "18:00"
-      }
-    ],
-    "serviceType": [
-      "Mental Health Counseling",
-      "Individual Therapy",
-      "Couples Therapy",
-      "Family Therapy",
-      "Corporate Wellness",
-      "Psychological Assessments",
-      "Online Therapy"
-    ],
-    "medicalSpecialty": [
-      "Clinical Psychology",
-      "Counseling Psychology",
-      "Mental Health"
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Mental Health Services",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Individual Therapy",
-            "description": "Personalized one-on-one counseling sessions for mental health support"
-          }
+        "medicalSpecialty": "Psychiatric",
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "contactType": "Patient enquiries",
+          "telephone": "+91-8860590449",
+          "email": "info@pramaancare.com",
+          "areaServed": "IN",
+          "availableLanguage": ["en","hi"]
+        }]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ms. Prerna Sethi",
+        "jobTitle": "RCI-Registered Clinical Psychologist",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Pramaan Care",
+          "url": "https://www.pramaancare.com/"
         },
-        {
-          "@type": "Offer",
-          "itemOffered": {
+        "hasCredential": "RCI Registration; M.Phil. Clinical Psychology",
+        "knowsAbout": [
+          "Cognitive Behavioral Therapy (CBT)",
+          "Dialectical Behavior Therapy (DBT)",
+          "Exposure and Response Prevention (ERP)",
+          "Motivational Enhancement Therapy (MET)",
+          "Expressive Arts Therapy"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
             "@type": "Service",
-            "name": "Couples Therapy",
-            "description": "Professional counseling for relationship challenges and communication"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
+            "name": "Individual Counselling",
+            "serviceType": "Psychological therapy",
+            "provider": {"@type":"Organization","name":"Pramaan Care"},
+            "areaServed": "India"
+          },
+          {
             "@type": "Service",
-            "name": "Family Therapy",
-            "description": "Family counseling and support for teenagers and parent-child relationships"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
+            "name": "Couples / Relationship Counselling",
+            "serviceType": "Psychological therapy",
+            "provider": {"@type":"Organization","name":"Pramaan Care"},
+            "areaServed": "India"
+          },
+          {
             "@type": "Service",
-            "name": "Corporate Wellness",
-            "description": "Employee assistance programs and workplace mental health solutions"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
+            "name": "Family & Teen Counselling",
+            "serviceType": "Psychological therapy",
+            "provider": {"@type":"Organization","name":"Pramaan Care"},
+            "areaServed": "India"
+          },
+          {
+            "@type": "Service",
+            "name": "Corporate Mental Health & Wellbeing Programs",
+            "serviceType": "Corporate wellbeing & assessments",
+            "provider": {"@type":"Organization","name":"Pramaan Care"},
+            "areaServed": "India"
+          },
+          {
             "@type": "Service",
             "name": "Psychological Assessments",
-            "description": "Comprehensive psychological testing and evaluation services"
+            "serviceType": "Clinical assessment",
+            "provider": {"@type":"Organization","name":"Pramaan Care"},
+            "areaServed": "India"
           }
-        }
-      ]
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8", // Update with actual rating
-      "reviewCount": "50", // Update with actual review count
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "priceRange": "$$", // Update as appropriate
-    "currenciesAccepted": "INR",
-    "paymentAccepted": "Cash, Credit Card, Online Payment",
-    "areaServed": [
-      {
-        "@type": "City",
-        "name": "Delhi"
-      },
-      {
-        "@type": "City", 
-        "name": "Gurgaon"
-      },
-      {
-        "@type": "Country",
-        "name": "India"
+        ]
       }
-    ]
-  };
+    ];
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
-  );
+    schemas.forEach((schema, index) => {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(schema);
+      script.id = `schema-${index}`;
+      document.head.appendChild(script);
+    });
+
+    return () => {
+      schemas.forEach((_, index) => {
+        const script = document.getElementById(`schema-${index}`);
+        if (script) script.remove();
+      });
+    };
+  }, []);
+
+  return null;
 }
