@@ -8,21 +8,26 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { PerformanceOptimizerV2 } from "@/components/performance-optimizer-v2"
 import { MobilePerformance } from "@/components/mobile-performance"
 import { CriticalPerformance } from "@/components/critical-performance"
+import { DOMOptimizer } from "@/components/dom-optimizer"
 import LenisProvider from "@/components/lenis-provider"
 
 export const metadata: Metadata = {
   title: {
-    default: 'Clinical Psychologist in Gurgaon & Delhi NCR | Pramaan Care',
-    template: '%s | Pramaan Care'
+    default: 'Best Clinical Psychologist in Gurgaon | Counselling & Online Therapy – Pramaan care',
+    template: '%s | Pramaan care'
   },
-  description: 'RCI-registered clinical psychologist offering counselling in Gurgaon & East of Kailash, Delhi NCR, plus secure online therapy across India. Book a session today.',
+  description: 'Pramaan care, led by experienced Clinical Psychologist Ms. Prerna Sethi, provides trusted counselling & psychotherapy in Gurgaon, Delhi NCR & online across India. Expert care for anxiety, depression, relationships & stress. Book your confidential session today.',
   keywords: [
-    'clinical psychologist Gurgaon',
-    'counselling Delhi NCR',
+    'mental health counseling',
+    'therapy Delhi',
+    'psychology services Gurgaon',
+    'couples therapy',
+    'family counseling',
+    'corporate wellness',
+    'psychological assessment',
     'online therapy India',
-    'couples therapy Gurgaon',
-    'adolescent counselling',
-    'psychological assessment'
+    'mental health support',
+    'counseling services'
   ],
   authors: [{ name: 'Pramaan Care' }],
   creator: 'Pramaan Care',
@@ -41,24 +46,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://www.pramaancare.com/',
-    title: 'Clinical Psychologist in Gurgaon & Delhi NCR | Pramaan Care',
-    description: 'RCI-registered clinical psychologist offering counselling in Gurgaon & East of Kailash, Delhi NCR, plus secure online therapy across India. Book a session today.',
+    url: 'https://pramaancare.com',
+    title: 'Best Clinical Psychologist in Gurgaon | Counselling & Online Therapy – Pramaan care',
+    description: 'Pramaan care, led by experienced Clinical Psychologist Ms. Prerna Sethi, provides trusted counselling & psychotherapy in Gurgaon, Delhi NCR & online across India. Expert care for anxiety, depression, relationships & stress.',
     siteName: 'Pramaan Care',
     images: [
       {
-        url: 'https://www.pramaancare.com/images/light logo.svg',
+        url: '/images/light logo.svg',
         width: 1200,
         height: 630,
-        alt: 'Pramaan Care – Clinical Psychology & Counselling',
+        alt: 'Pramaan Care - Mental Health Services',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Clinical Psychologist in Gurgaon & Delhi NCR | Pramaan Care',
-    description: 'Compassionate counselling & online therapy by an RCI-registered clinical psychologist.',
-    images: ['https://www.pramaancare.com/images/light logo.svg'],
+    title: 'Best Clinical Psychologist in Gurgaon | Counselling & Online Therapy – Pramaan care',
+    description: 'Pramaan care, led by experienced Clinical Psychologist Ms. Prerna Sethi, provides trusted counselling & psychotherapy in Gurgaon, Delhi NCR & online across India.',
+    images: ['/images/light logo.svg'],
   },
   verification: {
     // Add verification codes when available
@@ -66,11 +71,7 @@ export const metadata: Metadata = {
     // bing: 'your-bing-verification-code',
   },
   alternates: {
-    canonical: 'https://www.pramaancare.com/',
-    languages: {
-      'en-IN': 'https://www.pramaancare.com/',
-      'x-default': 'https://www.pramaancare.com/',
-    },
+    canonical: 'https://pramaancare.com',
   },
   category: 'health',
 };
@@ -119,6 +120,7 @@ export default function RootLayout({
           <PerformanceOptimizerV2 />
           <MobilePerformance />
           <CriticalPerformance />
+          <DOMOptimizer />
         </LenisProvider>
       </body>
     </html>

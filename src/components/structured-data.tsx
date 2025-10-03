@@ -1,125 +1,196 @@
 "use client";
 
 export function StructuredData() {
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://www.pramaancare.com/#website",
+    "url": "https://www.pramaancare.com/",
+    "name": "Pramaancare",
+    "inLanguage": "en",
+    "publisher": { "@id": "https://www.pramaancare.com/#org" },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.pramaancare.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": ["Organization","MedicalOrganization","LocalBusiness"],
-    "name": "Pramaan Care",
+    "@type": ["Organization","MedicalOrganization","LocalBusiness","ProfessionalService"],
+    "@id": "https://www.pramaancare.com/#org",
+    "name": "Pramaancare",
     "url": "https://www.pramaancare.com/",
-    "email": "info@pramaancare.com",
-    "telephone": "+91-8860590449",
-    "logo": "https://www.pramaancare.com/images/light logo.svg",
-    "image": "https://www.pramaancare.com/images/light logo.svg",
-    "areaServed": [
-      {"@type":"AdministrativeArea","name":"Gurgaon"},
-      {"@type":"AdministrativeArea","name":"Delhi NCR"},
-      {"@type":"Country","name":"India"},
-      {"@type":"Country","name":"International"}
-    ],
-    "medicalSpecialty": "Psychiatric",
-    "potentialAction": {
-      "@type": "ScheduleAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://www.pramaancare.com/#book-appointment",
-        "inLanguage": "en-IN",
-        "actionPlatform": ["https://schema.org/DesktopWebPlatform","https://schema.org/MobileWebPlatform"]
-      },
-      "result": { "@type": "Event", "name": "Therapy Session" }
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.pramaancare.com/images/light%20logo.svg"
     },
-    "contactPoint": [{
+    "image": "https://www.pramaancare.com/images/about-prerna.webp",
+    "description": "Clinical Psychologist led counselling & psychotherapy in Gurgaon, Delhi NCR & online across India.",
+    "telephone": "+91-8860590449",
+    "email": "info@pramaancare.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Gurgaon Office Address",
+      "addressLocality": "Gurugram",
+      "addressRegion": "Haryana",
+      "postalCode": "122001",
+      "addressCountry": "IN"
+    },
+    "areaServed": ["Gurugram","Delhi NCR","India","Online"],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "10:00",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "10:00",
+        "closes": "15:00"
+      }
+    ],
+    "contactPoint": {
       "@type": "ContactPoint",
-      "contactType": "Patient enquiries",
+      "contactType": "Customer Service",
       "telephone": "+91-8860590449",
       "email": "info@pramaancare.com",
       "areaServed": "IN",
       "availableLanguage": ["en","hi"]
-    }]
+    },
+    "sameAs": [
+      "https://www.facebook.com/pramaancare",
+      "https://www.instagram.com/pramaancare",
+      "https://www.linkedin.com/company/pramaancare",
+      "https://maps.google.com/?cid=YOUR_GBP_CID"
+    ]
   };
 
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": "https://www.pramaancare.com/#practitioner",
     "name": "Ms. Prerna Sethi",
-    "jobTitle": "RCI-Registered Clinical Psychologist",
-    "affiliation": {
-      "@type": "Organization",
-      "name": "Pramaan Care",
-      "url": "https://www.pramaancare.com/"
-    },
-    "hasCredential": "RCI Registration; M.Phil. Clinical Psychology",
-    "knowsAbout": [
-      "Cognitive Behavioral Therapy (CBT)",
-      "Dialectical Behavior Therapy (DBT)",
-      "Exposure and Response Prevention (ERP)",
-      "Motivational Enhancement Therapy (MET)",
-      "Expressive Arts Therapy"
+    "jobTitle": "Clinical Psychologist",
+    "description": "Experienced Clinical Psychologist specializing in anxiety, depression, relationship issues, stress management and psychological assessments.",
+    "worksFor": { "@id": "https://www.pramaancare.com/#org" },
+    "url": "https://www.pramaancare.com/about/",
+    "image": "https://www.pramaancare.com/images/Meet%20Ms.%20Prerna%20Sethi.jpg",
+    "sameAs": [
+      "https://www.linkedin.com/in/prerna-sethi-clinical-psychologist",
+      "https://www.pramaancare.com/about/"
     ]
   };
 
   const servicesSchema = {
     "@context": "https://schema.org",
-    "@graph": [
+    "@type": "ItemList",
+    "name": "Counselling & Therapy Services",
+    "itemListElement": [
       {
         "@type": "Service",
-        "name": "Individual Counselling",
-        "serviceType": "Psychological therapy",
-        "provider": {"@type":"Organization","name":"Pramaan Care"},
-        "areaServed": "India"
+        "name": "Individual Counselling & Psychotherapy",
+        "url": "https://www.pramaancare.com/services/individual-counselling/",
+        "provider": { "@id": "https://www.pramaancare.com/#org" },
+        "description": "One-to-one therapy with a Clinical Psychologist for anxiety, depression, stress, trauma, mood & sleep issues."
       },
       {
         "@type": "Service",
-        "name": "Couples / Relationship Counselling",
-        "serviceType": "Psychological therapy",
-        "provider": {"@type":"Organization","name":"Pramaan Care"},
-        "areaServed": "India"
+        "name": "Couples & Relationship Counselling",
+        "url": "https://www.pramaancare.com/services/couples-therapy/",
+        "provider": { "@id": "https://www.pramaancare.com/#org" },
+        "description": "Therapy for communication issues, conflict resolution, trust, intimacy, and premarital counselling."
       },
       {
         "@type": "Service",
         "name": "Family & Teen Counselling",
-        "serviceType": "Psychological therapy",
-        "provider": {"@type":"Organization","name":"Pramaan Care"},
-        "areaServed": "India"
+        "url": "https://www.pramaancare.com/services/family-teen-counselling/",
+        "provider": { "@id": "https://www.pramaancare.com/#org" },
+        "description": "Support for family dynamics, parenting challenges and adolescent mental health."
       },
       {
         "@type": "Service",
-        "name": "Corporate Mental Health & Wellbeing Programs",
-        "serviceType": "Corporate wellbeing & assessments",
-        "provider": {"@type":"Organization","name":"Pramaan Care"},
-        "areaServed": "India"
+        "name": "Online Therapy & Tele-Counselling",
+        "url": "https://www.pramaancare.com/services/online-therapy/",
+        "provider": { "@id": "https://www.pramaancare.com/#org" },
+        "description": "Secure online sessions with a Clinical Psychologist for clients across India."
       },
       {
         "@type": "Service",
         "name": "Psychological Assessments",
-        "serviceType": "Clinical assessment",
-        "provider": {"@type":"Organization","name":"Pramaan Care"},
-        "areaServed": "India"
+        "url": "https://www.pramaancare.com/services/assessments/",
+        "provider": { "@id": "https://www.pramaancare.com/#org" },
+        "description": "Standardized assessments for personality, cognitive functions, emotional/behavioral concerns and diagnosis."
+      },
+      {
+        "@type": "Service",
+        "name": "Corporate Wellness & EAP",
+        "url": "https://www.pramaancare.com/services/corporate-wellness/",
+        "provider": { "@id": "https://www.pramaancare.com/#org" },
+        "description": "Workplace mental health programs, workshops and employee assistance services."
       }
     ]
   };
 
-  const faqSchema = {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"What should I expect in my first counselling session?","acceptedAnswer":{"@type":"Answer","text":"Your first session focuses on understanding your concerns, goals, and history, followed by an initial plan for therapy."}},
-      {"@type":"Question","name":"How many sessions will I need?","acceptedAnswer":{"@type":"Answer","text":"Duration varies by concern and goals. Many clients notice progress within a few sessions; your therapist will review progress regularly."}},
-      {"@type":"Question","name":"Do you offer online counselling?","acceptedAnswer":{"@type":"Answer","text":"Yes—secure, end-to-end encrypted sessions are available across India and internationally."}},
-      {"@type":"Question","name":"Are these services for crisis or emergencies?","acceptedAnswer":{"@type":"Answer","text":"No. For emergencies, please contact local emergency services or a crisis helpline."}},
-      {"@type":"Question","name":"Is therapy confidential?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sessions are confidential within ethical and legal limits which your therapist will explain."}}
+  const breadcrumbsSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.pramaancare.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.pramaancare.com/services/" },
+      { "@type": "ListItem", "position": 3, "name": "About", "item": "https://www.pramaancare.com/about/" },
+      { "@type": "ListItem", "position": 4, "name": "Contact", "item": "https://www.pramaancare.com/contact/" }
     ]
   };
 
-  const websiteSchema = {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"Pramaan Care",
-    "url":"https://www.pramaancare.com/",
-    "inLanguage":"en-IN"
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you offer online counselling with a Clinical Psychologist?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We provide secure online therapy sessions with a qualified Clinical Psychologist for clients across India and abroad."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long is a counselling session and how many sessions will I need?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A typical session lasts 45–60 minutes. The number of sessions varies by concern, but many clients see progress within 6–12 sessions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my therapy confidential?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. All sessions are confidential and handled according to professional ethics and privacy standards, except where safety or legal obligations apply."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What concerns do you treat?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We support anxiety, depression, relationship issues, stress and burnout, trauma, self-esteem concerns, and more. Psychological assessments are also available."
+        }
+      }
+    ]
   };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -134,11 +205,11 @@ export function StructuredData() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </>
   );

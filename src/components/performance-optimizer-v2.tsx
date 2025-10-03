@@ -4,24 +4,46 @@ import { useEffect } from 'react';
 
 export function PerformanceOptimizerV2() {
   useEffect(() => {
-    // Critical resource preloading
+    // Critical resource preloading with better prioritization
     const preloadResources = () => {
-      const resources = [
-        { href: '/images/light logo.svg', as: 'image' },
+      const criticalResources = [
+        { href: '/images/light logo.svg', as: 'image', rel: 'preload' },
+        { href: '/images/about-prerna.webp', as: 'image', rel: 'preload' },
       ];
 
-      resources.forEach(({ href, as }) => {
+      const nonCriticalResources = [
+        { href: '/images/Meet Ms. Prerna Sethi.jpg', as: 'image', rel: 'prefetch' },
+      ];
+
+      // Load critical resources immediately
+      criticalResources.forEach(({ href, as, rel }) => {
         if (!document.querySelector(`link[href="${href}"]`)) {
           const link = document.createElement('link');
-          link.rel = 'preload';
+          link.rel = rel;
           link.href = href;
           link.as = as;
+          link.fetchPriority = 'high';
           document.head.appendChild(link);
         }
       });
+
+      // Prefetch non-critical resources when idle
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          nonCriticalResources.forEach(({ href, as, rel }) => {
+            if (!document.querySelector(`link[href="${href}"]`)) {
+              const link = document.createElement('link');
+              link.rel = rel;
+              link.href = href;
+              link.as = as;
+              document.head.appendChild(link);
+            }
+          });
+        });
+      }
     };
 
-    // Lazy load non-critical images
+    // Enhanced lazy load non-critical images with intersection observer
     const lazyLoadImages = () => {
       if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries) => {
@@ -35,35 +57,81 @@ export function PerformanceOptimizerV2() {
               }
             }
           });
-        }, { rootMargin: '50px', threshold: 0.1 });
+        }, {
+          rootMargin: '50px',
+          threshold: 0.1
+        });
 
-        document.querySelectorAll('img[data-src]').forEach(img => {
+        // Also observe regular img tags that aren't lazy loaded yet
+        document.querySelectorAll('img[data-src], img[loading="lazy"]').forEach(img => {
           imageObserver.observe(img);
         });
+
+        return () => imageObserver.disconnect();
       }
     };
 
-    // Optimize animations
+    // Optimize animations with reduced motion support
     const optimizeAnimations = () => {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.documentElement.style.setProperty('--animation-duration', '0.01ms');
       }
+
+      // Throttle scroll-based animations
+      let ticking = false;
+      const handleScroll = () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            // Handle scroll-based animations here if needed
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      return () => window.removeEventListener('scroll', handleScroll);
     };
 
-    // Memory cleanup
+    // Memory cleanup and performance monitoring
     const cleanupUnusedResources = () => {
-      // Remove unused event listeners
+      // Remove unused event listeners and elements
       const unusedElements = document.querySelectorAll('[data-cleanup="true"]');
       unusedElements.forEach(el => el.remove());
+
+      // Clean up any lingering observers
+      // Performance monitoring (only in development)
+      if (process.env.NODE_ENV === 'development' && 'performance' in window) {
+        console.log('Performance monitoring active');
+      }
     };
 
-    preloadResources();
-    lazyLoadImages();
-    optimizeAnimations();
-    
-    const cleanup = setTimeout(cleanupUnusedResources, 5000);
+    // Break up long tasks using setTimeout
+    const scheduleLongTasks = () => {
+      // Use setTimeout to break up tasks and prevent long main thread blocks
+      const tasks = [preloadResources, lazyLoadImages, optimizeAnimations];
 
-    return () => clearTimeout(cleanup);
+      const runTask = (index: number) => {
+        if (index < tasks.length) {
+          setTimeout(() => {
+            tasks[index]();
+            runTask(index + 1);
+          }, 0);
+        }
+      };
+
+      runTask(0);
+    };
+
+    // Initialize performance optimizations
+    scheduleLongTasks();
+
+    // Cleanup after 10 seconds to free memory
+    const cleanupTimer = setTimeout(cleanupUnusedResources, 10000);
+
+    return () => {
+      clearTimeout(cleanupTimer);
+    };
   }, []);
 
   return null;
