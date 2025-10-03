@@ -14,12 +14,22 @@ export const metadata: Metadata = {
   title: 'Clinical Psychologist in Gurgaon & Delhi NCR | Pramaan Care',
   description: 'RCI-registered clinical psychologist offering counselling in Gurgaon & East of Kailash, Delhi NCR, plus secure online therapy across India. Book a session today.',
   keywords: [
-    'clinical psychologist Gurgaon',
-    'counselling Delhi NCR',
-    'online therapy India',
-    'couples therapy Gurgaon',
-    'adolescent counselling',
-    'psychological assessment'
+    'Prerna Sethi Psychologist',
+    'Ms Prerna Sethi Clinical Psychologist Delhi',
+    'Best psychologist near me',
+    'Anxiety treatment Delhi',
+    'Depression counseling online',
+    'Child psychologist Delhi',
+    'Relationship counseling Delhi',
+    'Cognitive behavioral therapy Delhi',
+    'Affordable psychologist Delhi',
+    'Top rated psychologist Delhi',
+    'Online therapy India',
+    'Mental health counseling Delhi',
+    'Ms. Prerna Sethi reviews',
+    'Prerna Sethi anxiety specialist',
+    'Prerna Sethi child therapy',
+    'Best clinical psychologist in Delhi for anxiety'
   ],
   authors: [{ name: 'Pramaan Care' }],
   creator: 'Pramaan Care',
@@ -66,6 +76,9 @@ export const metadata: Metadata = {
     canonical: 'https://www.pramaancare.com/',
   },
   category: 'health',
+  other: {
+    'keywords': 'Prerna Sethi Psychologist, Ms Prerna Sethi Clinical Psychologist Delhi, Best psychologist near me, Anxiety treatment Delhi, Depression counseling online, Child psychologist Delhi, Relationship counseling Delhi, Cognitive behavioral therapy Delhi, Affordable psychologist Delhi, Top rated psychologist Delhi, Online therapy India, Mental health counseling Delhi'
+  }
 };
 
 export default function RootLayout({

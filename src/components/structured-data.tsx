@@ -4,7 +4,8 @@ import { useEffect } from "react";
 
 export function StructuredData() {
   useEffect(() => {
-    const schemas = [
+    const injectSchemas = () => {
+      const schemas = [
       {
         "@context": "https://schema.org",
         "@type": ["Organization","MedicalOrganization","LocalBusiness"],
@@ -34,6 +35,7 @@ export function StructuredData() {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Ms. Prerna Sethi",
+        "alternateName": ["Prerna Sethi Psychologist", "Ms Prerna Sethi Clinical Psychologist Delhi"],
         "jobTitle": "RCI-Registered Clinical Psychologist",
         "affiliation": {
           "@type": "Organization",
@@ -46,29 +48,59 @@ export function StructuredData() {
           "Dialectical Behavior Therapy (DBT)",
           "Exposure and Response Prevention (ERP)",
           "Motivational Enhancement Therapy (MET)",
-          "Expressive Arts Therapy"
+          "Expressive Arts Therapy",
+          "Anxiety treatment Delhi",
+          "Depression counseling",
+          "Child psychology",
+          "Relationship counseling"
         ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Online Therapy Session with Ms. Prerna Sethi",
+        "image": "https://www.pramaancare.com/images/light logo.svg",
+        "description": "Professional online therapy session with experienced clinical psychologist Ms. Prerna Sethi. Specializing in anxiety treatment, depression counseling, relationship issues, and child psychology.",
+        "brand": {
+          "@type": "Organization",
+          "name": "Pramaan Care"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "35",
+          "bestRating": "5"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.pramaancare.com/",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock"
+        }
       },
       {
         "@context": "https://schema.org",
         "@graph": [
           {
             "@type": "Service",
-            "name": "Individual Counselling",
+            "name": "Anxiety Treatment Delhi",
+            "alternateName": "Individual Counselling",
             "serviceType": "Psychological therapy",
             "provider": {"@type":"Organization","name":"Pramaan Care"},
             "areaServed": "India"
           },
           {
             "@type": "Service",
-            "name": "Couples / Relationship Counselling",
+            "name": "Relationship Counseling Delhi",
+            "alternateName": "Couples / Relationship Counselling",
             "serviceType": "Psychological therapy",
             "provider": {"@type":"Organization","name":"Pramaan Care"},
             "areaServed": "India"
           },
           {
             "@type": "Service",
-            "name": "Family & Teen Counselling",
+            "name": "Child Psychologist Delhi",
+            "alternateName": "Family & Teen Counselling",
             "serviceType": "Psychological therapy",
             "provider": {"@type":"Organization","name":"Pramaan Care"},
             "areaServed": "India"
@@ -82,7 +114,8 @@ export function StructuredData() {
           },
           {
             "@type": "Service",
-            "name": "Psychological Assessments",
+            "name": "Cognitive Behavioral Therapy Delhi",
+            "alternateName": "Psychological Assessments",
             "serviceType": "Clinical assessment",
             "provider": {"@type":"Organization","name":"Pramaan Care"},
             "areaServed": "India"
@@ -91,20 +124,20 @@ export function StructuredData() {
       }
     ];
 
-    schemas.forEach((schema, index) => {
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.text = JSON.stringify(schema);
-      script.id = `schema-${index}`;
-      document.head.appendChild(script);
-    });
-
-    return () => {
-      schemas.forEach((_, index) => {
-        const script = document.getElementById(`schema-${index}`);
-        if (script) script.remove();
+      schemas.forEach((schema, index) => {
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.text = JSON.stringify(schema);
+        script.id = `schema-${index}`;
+        document.head.appendChild(script);
       });
     };
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(injectSchemas);
+    } else {
+      setTimeout(injectSchemas, 1);
+    }
   }, []);
 
   return null;
