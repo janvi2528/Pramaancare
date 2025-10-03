@@ -8,14 +8,15 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { PerformanceOptimizerV2 } from "@/components/performance-optimizer-v2"
 import { MobilePerformance } from "@/components/mobile-performance"
 import { CriticalPerformance } from "@/components/critical-performance"
+import { DOMOptimizer } from "@/components/dom-optimizer"
 import LenisProvider from "@/components/lenis-provider"
 
 export const metadata: Metadata = {
   title: {
-    default: 'Pramaan Care - Professional Mental Health & Counseling Services',
-    template: '%s | Pramaan Care'
+    default: 'Best Clinical Psychologist in Gurgaon | Counselling & Online Therapy – Pramaan care',
+    template: '%s | Pramaan care'
   },
-  description: 'Professional mental health counseling and psychological services in Delhi & Gurgaon. Individual therapy, couples counseling, family therapy, corporate wellness, and psychological assessments. Both in-person and online sessions available.',
+  description: 'Pramaan care, led by experienced Clinical Psychologist Ms. Prerna Sethi, provides trusted counselling & psychotherapy in Gurgaon, Delhi NCR & online across India. Expert care for anxiety, depression, relationships & stress. Book your confidential session today.',
   keywords: [
     'mental health counseling',
     'therapy Delhi',
@@ -46,8 +47,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://pramaancare.com',
-    title: 'Pramaan Care - Professional Mental Health & Counseling Services',
-    description: 'Professional mental health counseling and psychological services in Delhi & Gurgaon. Individual therapy, couples counseling, family therapy, corporate wellness, and psychological assessments.',
+    title: 'Best Clinical Psychologist in Gurgaon | Counselling & Online Therapy – Pramaan care',
+    description: 'Pramaan care, led by experienced Clinical Psychologist Ms. Prerna Sethi, provides trusted counselling & psychotherapy in Gurgaon, Delhi NCR & online across India. Expert care for anxiety, depression, relationships & stress.',
     siteName: 'Pramaan Care',
     images: [
       {
@@ -60,8 +61,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pramaan Care - Professional Mental Health & Counseling Services',
-    description: 'Professional mental health counseling and psychological services in Delhi & Gurgaon.',
+    title: 'Best Clinical Psychologist in Gurgaon | Counselling & Online Therapy – Pramaan care',
+    description: 'Pramaan care, led by experienced Clinical Psychologist Ms. Prerna Sethi, provides trusted counselling & psychotherapy in Gurgaon, Delhi NCR & online across India.',
     images: ['/images/light logo.svg'],
   },
   verification: {
@@ -119,6 +120,7 @@ export default function RootLayout({
           <PerformanceOptimizerV2 />
           <MobilePerformance />
           <CriticalPerformance />
+          <DOMOptimizer />
         </LenisProvider>
       </body>
     </html>

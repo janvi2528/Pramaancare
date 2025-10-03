@@ -2,7 +2,7 @@
 "use client";
 
 import Image from "next/image";
-
+import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ConsultationFormPopup } from "@/components/consultation-form-popup";
@@ -33,18 +33,28 @@ const reviews = [
 ];
 
 export function Hero() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Mark as loaded after initial render to prevent layout shift
+    setIsLoaded(true);
+  }, []);
+
   return (
     <section
       id="home"
       className="relative w-full overflow-hidden"
     >
-        <Image 
+        {/* Background pattern - preload critical */}
+        <Image
             src="https://cdn.shopify.com/s/files/1/0581/7198/1896/files/circle-pattern.png?v=1756187260"
             alt="Circle Pattern"
             width={500}
             height={500}
             priority
             className="absolute top-0 right-0 -z-10 opacity-[0.04] w-3/4 h-auto transform translate-x-1/3"
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PC9zdmc+"
         />
       <div className="w-full px-[14px] md:w-[96%] md:mx-auto md:px-6 pt-20 md:pt-28 lg:pt-32 pb-16">
         <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -70,23 +80,30 @@ export function Hero() {
             </div>
         </div>
       </div>
-      <div className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-white">
-  <Marquee repeat={4} className="[--duration:60s] [--gap:1.5rem]">
-          {reviews.map((review, index) => (
-             <div key={review.name} className="relative h-[400px] w-[460px] overflow-hidden rounded-[20px]">
-                 <Image
-                    src={review.img}
-                    alt={review.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 300px, 460px"
-                    priority={index === 0}
-                    loading={index === 0 ? "eager" : "lazy"}
-                  />
-             </div>
-          ))}
-        </Marquee>
-      </div>
+
+      {/* Marquee section - defer loading */}
+      {isLoaded && (
+        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-white">
+          <Marquee repeat={4} className="[--duration:60s] [--gap:1.5rem]">
+            {reviews.map((review) => (
+               <div key={review.name} className="relative h-[400px] w-[460px] overflow-hidden rounded-[20px]">
+                   <Image
+                      src={review.img}
+                      alt={review.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 300px, 460px"
+                      priority={false}
+                      loading="lazy"
+                      quality={75}
+                      placeholder="blur"
+                      blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDYwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PC9zdmc+"
+                    />
+               </div>
+            ))}
+          </Marquee>
+        </div>
+      )}
     </section>
   );
 }

@@ -62,10 +62,43 @@ const nextConfig: NextConfig = {
             name: 'vendor',
             chunks: 'all',
             test: /node_modules/,
+            priority: 10,
+          },
+          radix: {
+            name: 'radix-ui',
+            test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
+            chunks: 'all',
+            priority: 20,
+          },
+          lucide: {
+            name: 'lucide-icons',
+            test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
+            chunks: 'all',
+            priority: 20,
+          },
+          framer: {
+            name: 'framer-motion',
+            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+            chunks: 'all',
+            priority: 20,
           },
         },
       };
+
+      // Minimize bundle size
+      config.optimization.minimize = true;
+      config.optimization.usedExports = true;
     }
+
+    // Add modern JS support
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+      };
+    }
+
     return config;
   },
 
@@ -129,6 +162,24 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/images/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/_next/image(.*)',
         headers: [
           {
             key: 'Cache-Control',
