@@ -3,6 +3,7 @@
 
 import { contactFormSchema, consultationFormSchema } from "@/lib/schemas";
 import { summarizeContactForm } from "@/ai/flows/summarize-contact-form";
+import { sendMail } from "@/lib/email";
 
 export type FormState = {
   success: boolean;
@@ -12,7 +13,7 @@ export type FormState = {
 };
 
 export async function handleContactForm(
-  prevState: FormState,
+  _prevState: FormState,
   formData: FormData
 ): Promise<FormState> {
   const values = {
@@ -61,13 +62,39 @@ export async function handleContactForm(
   }
 
   try {
-    // Here you would integrate with your backend or email service
-    console.log('Form submission:', validatedFields.data);
-    
-    const successMessage = isConsultationForm 
+    // Return success immediately to user
+    const successMessage = isConsultationForm
       ? 'Your consultation request has been received. We will contact you shortly to confirm your appointment!'
       : 'We will contact you shortly!';
-    
+
+    // Process AI summary and email in the background (non-blocking)
+    // This prevents the user from waiting for these slow operations
+    (async () => {
+      try {
+        // Create AI summary of the submission
+        const { summary, isUrgent } = await summarizeContactForm(validatedFields.data as any);
+
+        // Prepare email body
+        const lines: string[] = [];
+        lines.push(`Summary:\n${summary}\n`);
+        lines.push(`Form data:`);
+        for (const k in formRecord) {
+          lines.push(`${k}: ${formRecord[k]}`);
+        }
+
+        // Send email to the requested address
+        await sendMail({
+          to: 'pramaancare@gmail.com',
+          subject: `New contact form submission${isUrgent ? ' (URGENT)' : ''}`,
+          text: lines.join('\n'),
+          html: `<pre>${lines.map(l => l.replace(/</g,'&lt;')).join('<br/>')}</pre>`,
+        });
+      } catch (bgError) {
+        console.error('Background processing error (AI/Email):', bgError);
+        // Log but don't fail - user already got success response
+      }
+    })();
+
     return {
       success: true,
       message: successMessage,
